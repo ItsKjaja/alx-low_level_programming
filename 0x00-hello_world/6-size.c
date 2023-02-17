@@ -22,4 +22,4 @@ int main(void)
 	printf("Size of a float: %lu byte(s)\n", sizeof(myFloat));
 
 	return (0);
-}	
+ }	
