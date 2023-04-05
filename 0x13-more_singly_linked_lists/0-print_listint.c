@@ -13,11 +13,12 @@
 	const listint_t *current = h;
 
 	while
-	      {	
-	      (current !=NULL)
-	printf ("%i\n", current->n);
-        current = current->next;
-        count_nodes++;
+	      
+	      (current != NULL)
+	      {
+		      printf ("%i\n", current->n);
+                     current = current->next;
+                      count_nodes++;
 	      }
 	return count_nodes;
 }
