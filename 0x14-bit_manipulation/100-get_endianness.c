@@ -2,9 +2,9 @@
 
 
 /**
- * get_endianness and check endianness
+ * get_endianness- and check endianness
  *
- * Return: 0 if big endian, 1 if little endian
+ * Return: 0 if big endian, 1 if little endian.
  */
 
 
