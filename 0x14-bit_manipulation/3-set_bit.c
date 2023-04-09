@@ -2,9 +2,9 @@
 
 
 /**
- * Write a function - sets the value of a bit to 1
- * @n: pointer
- * @index: Starting from 0
+ * set_bit it sets the value of a bit to 1 at such index given.
+ * @n: pointer to set
+ * @index: which to set the bit.
  *
  * Return: 1 if it worked,  -1 in error case.
  */
