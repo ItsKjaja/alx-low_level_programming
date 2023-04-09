@@ -6,20 +6,20 @@
  * @n: pointer to set
  * @index: which to set the bit.
  *
- * Return: 1 if it worked,  -1 in error case.
+ * Return: 1 if it worked,  -1 if an error occured.
  */
 
 int set_bit(unsigned long int *n, unsigned int index)
 
 {
-	unsigned long int set_a_bit;
+	unsigned long int st;
 
 
 	if (index > (sizeof(unsigned long int) *8 - 1))
 		return (-1);
 
-	set_a_bit = 1 << index;
-	*n = *n | set_a_bit;
+	st = 1 << index;
+	*n = *n | st;
 	return (1);
 
 }
