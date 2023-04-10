@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 		dprintf(STDERR_FILENO, "USAGE: cp file_from file_to\n"),
 			exit(97);
-	f_name = argv[1], t__name = argv[2];
-	Fl_src = open(from_name, O_RDONLY);
+	f_name = argv[1], t_name = argv[2];
+	Fl_src = open(f_name, O_RDONLY);
 	if (Fl_src == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f_name),
 			exit(98);
@@ -33,11 +33,11 @@ if (wr_r == -1)
 	        	exit(99);
 		rd_r = read(Fl_src, buff, 1024);
 	}
-	if (close(Fl_src) == -1
+	if (close(Fl_src) == -1)
 			dprintf(STDERR_FILENO, "Error: Can't close fd %\n", Fl_src),
 			exit(100);
 			if (close(Fl_d) == -1)
 			dprintf(STDERR_FILENO, "Error: Can't close fd %\n", Fl_d),
 			exit(100);
 			return (0);
-			}
+	}
