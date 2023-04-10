@@ -2,42 +2,50 @@
 
 /**
  * main - entry point c file to another file
- * @argc:arguments number
- * @argv:arguments file to and file from
+ * @arc:arguments number
+ * @arv:arguments file to and file from
  * Return: 0 in succes
  */
 
-int main(int argc, char *argv[])
+int main(int arc, char *arv[])
 {
-	char *f_name, *t_name, buff[1024];
-	int Fl_d, Fl_src, rd_r, wr_r;
+	int Fl_from, Fl_to;
+	ssize_t Fl_rd = 1024, Fl_wr, close_Fl;
+	char content[1024];
 
-	if (argc != 3)
-		dprintf(STDERR_FILENO, "USAGE: cp file_from file_to\n"),
-			exit(97);
-	f_name = argv[1], t_name = argv[2];
-	Fl_src = open(f_name, O_RDONLY);
-	if (Fl_src == -1)
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f_name),
-			exit(98);
-	Fl_d = open(t_name, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (Fl_d == -1)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", f_name),
-			exit(98);
-	while (rd_r > 0)
+
+		if (arc != 3)
+		{
+			dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+			exit(97); }
+	Fl_from = open(arv[1], O_RDONLY);
+	if (Fl_from == -1)
 	{
-	wr_r = write(Fl_d, buff, rd_r);
-
-if (wr_r == -1)
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", t_name),
-	        	exit(99);
-		rd_r = read(Fl_src, buff, 1024);
-	}
-	if (close(Fl_src) == -1)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %\n", Fl_src),
-			exit(100);
-			if (close(Fl_d) == -1)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %\n", Fl_d),
-			exit(100);
-			return (0);
-	}
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", arv[1]);
+			exit(98); }
+	Fl_to = open(arv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (Fl_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arv[2]);
+		exit(99); }
+	while (Fl_rd == 1024)
+	{
+		Fl_rd = read(Fl_from, content, 1024);
+		if (Fl_rd == -1)
+		{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", arv[1]);
+				exit(98); }
+				Fl_wr = write(Fl_to, content, Fl_rd);
+				if (Fl_wr == -1)
+				{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arv[2]);
+				exit(99); }
+				}
+				close_Fl = close(Fl_from);
+				if (close_Fl == -1)
+				{ dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", Fl_from);
+				exit(100); }
+				close_Fl = close(Fl_to);
+				if (close_Fl == -1)
+				{ dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", Fl_to);
+				exit(100); }
+				return (0);
+				}
