@@ -4,7 +4,7 @@
  * create_file - create a file with name filename
  * @filename: filename
  * @text_content:file information to write
- * Return: 1 on success, -1 on failure (file can not be created, file can not be written, write “fails”, etc…).
+ * Return: 1 on success, -1 on failure.
  */
 
 int create_file(const char *filename, char *text_content)
