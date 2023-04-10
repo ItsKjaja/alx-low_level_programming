@@ -30,7 +30,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	{
 		free(txt);
 		close(Fl);
-		return(0);
+		return (0);
 	}
 	numletters = write(STDOUT_FILENO, txt, numletters);
 	if (numletters == 1)
