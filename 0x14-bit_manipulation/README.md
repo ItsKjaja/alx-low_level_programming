@@ -1,7 +1,6 @@
 0x14. C - Bit manipulation
 
-this project in alx-low_level_programming is about 
-
+this project in alx-low_level_programming is about
 @Bit manipulation
 
 0. 0-binary_to_uint.c
