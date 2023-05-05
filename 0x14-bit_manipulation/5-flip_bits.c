@@ -12,15 +12,15 @@
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long int dif
-		int count = 0;
-	dif = n ^ m;
+	unsigned long int dif = 0;
 
-       while (dif != 0)
-{
-	count += dif &1;
-	dif = dif >> 1;
-}
 
-return (count);
+	while (n || m)
+	{
+		if ((n & 1) != (m & 1))
+			dif++;
+		m = m >> 1;
+		n = n >> 1;
 	}
+	return (dif);
+}		
