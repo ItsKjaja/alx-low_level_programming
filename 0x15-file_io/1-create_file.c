@@ -4,7 +4,7 @@
 /**
  * create_file - file creating
  * @filename: file's name
- * @text_contant: NULL terminated string to write to the file
+ * @text_content: NULL terminated string to write to the file
  * Return:1 on success, -1 on failure
  */
 
