@@ -1,17 +1,16 @@
 #include "main.h"
 
-/**
- * main - copy info from file_from to file_to.
- * @ac: number of arguments
- * @av: array of arguments
- * Return: Always 0.
- */
 
 void error_file_from(char *, char *);
 void error_file_to(char *, char *);
 void error_close(int, char *);
 
-
+/**
+ * copy_file - copies a file from one to another
+ * file_to: file to copy to
+ * file_from: file to copy from
+ * Return: Always 0.
+ */
 
 int copy_file(char *file_to, char *file_from)
 {
@@ -90,18 +89,18 @@ void error_file_to(char *file_to, char *buf)
 
 /**
  * main - program's main
- * @ac: number of arguments
- * @av: array of arguments
+ * @argc: number of arguments
+ * @argv: array of arguments
  * Return: 0
  */
-int main(int ac, char *av[])
+int main(int argc, char *argv[])
 
 {
-	if (ac != 3)
+	if (argc != 3)
 	{
 		dprntf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	copy_file(av[2], av[1]);
+	copy_file(argv[2], argv[1]);
 	return (0);
 }
