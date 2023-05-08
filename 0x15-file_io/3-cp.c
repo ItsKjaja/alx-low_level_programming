@@ -11,12 +11,12 @@
 int main(int argc, char **argv)
 {
 	int f_f, f_t;
-	ssize_t l_rd = 1024, l_wr, close_f;
+	ssize_t l_rd = 1024, l_wr, close_file;
 	char content[1024];
 
 
 	if (argc != 3)
-	{dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+	{dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");  exit(97);
 
 
 	}
