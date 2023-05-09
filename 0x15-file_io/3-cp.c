@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98); }
 		l_wr = write(fi_to, content, l_rd);
-		if (l_write == -1)
+		if (l_wr == -1)
 		{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99); }
 	}
