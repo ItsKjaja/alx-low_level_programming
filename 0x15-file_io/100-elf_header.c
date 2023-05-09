@@ -233,3 +233,67 @@ void _entry(char *he, int x64)
 		 printf("\n");
 }
 
+
+
+
+/**
+ * main - displays the information contained in the ELF header at
+ * the start of an ELF file.
+ *
+ * Usage: elf_header elf_filename
+ * displayed information: (not less, not more)
+ * Magic
+ * Class
+ * Data
+ * Version
+ * OS/ABI
+ * ABI Version
+ * Type
+ * Entry point address
+ *
+ * @argc: Counts the number of parameters that go into main
+ * @argv: Pointer of array of pointers containing strings entering main
+ *
+ * Return: Always 0 on (Success)
+ *
+ * if the file is not an ELF file, or on error, exit with status code 98
+ *  and display a comprehensive error message to stderr
+ */
+int main(int argc, char **argv)
+{
+	int fdelf, relf, closecheck, x64 = 0;
+	char h[32];
+
+	if (argc != 2)
+		dprintf(STDERR_FILENO, "Wrong # of Arguments\n"), exit(98);
+	if (argv[1] == 0)
+		dprintf(STDERR_FILENO, "Null name\n"), exit(98);
+	fdelf = open(argv[1], O_RDONLY);
+	if (fdelf == -1)
+		dprintf(STDERR_FILENO, "Can't Open File\n"), exit(98);
+	relf = read(fdelf, h, 32);
+	if (relf == -1)
+		dprintf(STDERR_FILENO, "Error Reading File\n"), exit(98);
+
+	_checkelf(h);
+
+	if (h[4] == 2)
+		x64 = 1;
+
+	_magic(h);
+	_class(h, x64);
+	_data(h);
+	_version(h);
+	_os(h);
+	_abiv(h);
+	_type(h, x64);
+	_entry(h, x64);
+
+	closecheck = close(fdelf);
+
+	if (closecheck == -1)
+		dprintf(STDERR_FILENO, "Error Closing File\n"), exit(98);
+
+	return (0);
+}
+
