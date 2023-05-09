@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99); }
 	}
-	        cl_file = close(fi_from);
+	cl_file = close(fi_from);
 		if (cl_file == -1)
 		{ dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fi_from);
 			exit(100); }
