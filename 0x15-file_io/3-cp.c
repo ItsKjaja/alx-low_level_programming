@@ -30,16 +30,16 @@ int main(int argc, char **argv)
 			exit(98); }
 		l_wr = write(fi_to, content, l_rd);
 		if (l_write == -1)
-		{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99); }
 	}
 	cl_file = close(fi_from);
 	if (cl_file == -1)
-	{ dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", file_from);
+	{ dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", fi_from);
 		exit(100); }
 	cl_file = close(fi_to);
 	if (cl_file == -1)
-	{ dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", file_to);
+	{ dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", fi_to);
 		exit(100); }
 return (0);
 }
