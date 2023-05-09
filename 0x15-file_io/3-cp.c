@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	if (from == -1)
 	{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]),
 		exit(98); }
-	to = pen(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (to == -1)
 	{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99); }
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	{
 		l_rd = read(from, content, 1024);
 		if (l_rd == -1)
-		{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1];
+		{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 				exit(98); }
 				l_wr = write(to, content, l_rd);
 				if (l_wr == -1)
