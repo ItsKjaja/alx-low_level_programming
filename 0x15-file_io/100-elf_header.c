@@ -42,7 +42,7 @@ if (n < 0)
 	print_version(header->e_ident);
 	print_osabi(header->e_ident);
 	printf(" ABI Version: ");
-	printf("i\n" header->e_ident[EI_ABIVERSION]);
+	printf("%i\n", header->e_ident[EI_ABIVERSION]);
 	print_type(header->e_type, header->e_ident);
 	print_entry(header->e_entry, header->e_ident);
 	free(header);
@@ -252,3 +252,5 @@ unsigned int lit_to_big_endian(unsigned int x)
 			 ((x << 24) & 0xff000000)));
 			}
 
+}
+}
