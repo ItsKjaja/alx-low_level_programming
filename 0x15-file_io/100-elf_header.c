@@ -13,11 +13,11 @@
 int main(int ac, char *av[])
 {
 	register int fd, n, b;
-	int elf *header;
+	 Elf64_Ehdr *header;
 
 	if (ac !=2)
 	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(98);
-	header = malloc(sizeof(elf));
+	header = malloc(sizeof(Elf64_Ehdr));
 	if (!header)
 	dprintf(STDERR_FILENO, "Malloc error\n"), exit(98);
 	fd = open(av[1], O_RDONLY);
@@ -26,7 +26,7 @@ int main(int ac, char *av[])
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 	exit(98);
 }
-n = read(fd, header, sizeof(elf));
+n = read(fd, header, sizeof(Elf64_Ehdr));
 if (n < 0)
 		{
 		free(header);
@@ -234,7 +234,7 @@ void print_entry(unsigned int e_entry, unsigned char *e_ident)
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_entry = lit_to_big_endian(e_entry);
 
-	printf(" Entry point address:       ")
+	printf(" Entry point address:       ");
 			printf("%#x\n", (unsigned int) e_entry);
 }
 
@@ -245,11 +245,11 @@ void print_entry(unsigned int e_entry, unsigned char *e_ident)
  */
 
 
-unsigned int lit_tobig_endian(unsigned int x)
+unsigned int lit_to_big_endian(unsigned int x)
 {
 	return (((x >> 24) & 0x000000ff) |
 			((x >> 8 & 0x0000ff00) |
 			 ((x << 8) & 0x00ff0000) |
-			 ((x << 24) & 0xff000000));
+			 ((x << 24) & 0xff000000)));
 			}
 
