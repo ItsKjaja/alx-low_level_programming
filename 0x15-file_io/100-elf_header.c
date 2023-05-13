@@ -183,7 +183,7 @@ void print_osabi(unsigned char *e_ident)
 			printf("Standalone App\n");
 			break;
 		default:
-			printf("<unknown: %x\n", e_ident[EI_OSABI]);
+			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
 
@@ -215,8 +215,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 		case ET_CORE:
 			printf("CORE (Core file)\n");
 			break;
-			default
-			:
+			default:
 			printf("<unknown: %x>\n", e_type);
 	}
 }
