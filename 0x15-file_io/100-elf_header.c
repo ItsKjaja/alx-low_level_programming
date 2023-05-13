@@ -13,11 +13,11 @@
 int main(int ac, char *av[])
 {
 	register int fd, n, b;
-	elf *header;
+	int elf *header;
 
 	if (ac !=2)
 	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(98);
-	header = mallçoc(sizeof(elf));
+	header = malloc(sizeof(elf));
 	if (!header)
 	dprintf(STDERR_FILENO, "Malloc error\n"), exit(98);
 	fd = open(av[1], O_RDONLY);
@@ -27,7 +27,7 @@ int main(int ac, char *av[])
 	exit(98);
 }
 n = read(fd, header, sizeof(elf));
-if (n < à°
+if (n < 0)
 		{
 		free(header);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
@@ -47,6 +47,7 @@ if (n < à°
 	print_entry(header->e_entry, header->e_ident);
 	free(header);
 	b = close(fd);
+{
 	if (b)
 	dprintf(STDERR_FILENO, "Error: Can't close fd\n"), exit(98);
 	return (0);
@@ -78,7 +79,7 @@ void print_magic(unsigned char *e_ident)
 {
 	register int m;
 	printf(" Magic: ");
-	for (m = 0; m < EI_IDENT - 1; m++)
+	for (m = 0; m < EI_NIDENT - 1; m++)
 		printf("%02x ", e_ident[m]);
 	printf("%02x\n", e_ident[m]);
 }
@@ -91,17 +92,17 @@ void print_class(unsigned char *e_ident)
 	printf(" class   ");
 	switch (e_ident[EI_CLASS])
 	{
-		case ELFCLASSENONE:
+		case ELFCLASSNONE:
 			printf("This class is invalid\n");
 			break;
 		case ELFCLASS32:
 			printf("ELF32\n");
 			break;
 		case ELFCLASS64:
-			printf("ELF64"\n");
+			printf("ELF64\n");
 			break;
 		default:
-			printf("<unknown: %x>\n, e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n" , e_ident[EI_CLASS]);
 /**
  * print_data - print ELF's data
  * @e_ident: pointer to char array
