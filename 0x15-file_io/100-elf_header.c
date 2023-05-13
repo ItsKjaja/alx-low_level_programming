@@ -15,7 +15,7 @@ int main(int ac, char *av[])
 	register int fd, n, b;
 	 Elf64_Ehdr *header;
 
-	if (ac !=2)
+	if (ac != 2)
 	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(98);
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (!header)
@@ -102,7 +102,7 @@ void print_class(unsigned char *e_ident)
 			printf("ELF64\n");
 			break;
 		default:
-			printf("<unknown: %x>\n" , e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 /**
  * print_data - print ELF's data
  * @e_ident: pointer to char array
@@ -124,7 +124,7 @@ void print_data(unsigned char *e_ident)
 			printf("2's complement, big endian\n");
 			break;
 		default:
-			printf("<unknown: %x>\n" , e_ident[EI_DATA]);
+			printf("<unknown: %x>\n", e_ident[EI_DATA]);
 	}
 }
 
@@ -136,10 +136,10 @@ void print_data(unsigned char *e_ident)
 void print_version(unsigned char *e_ident)
 {
 	printf(" Version:      ");
-	if (e-ident[EI_VERSION] == EV_CURRENT)
-		printf("%i (current)\n" , EV_CURRENT);
+	if (e_ident[EI_VERSION] == EV_CURRENT)
+		printf("%i (current)\n", EV_CURRENT);
 	else
-		printf("%i\n" , e_ident[EI_VERSION]);
+		printf("%i\n", e_ident[EI_VERSION]);
 }
 
 /**
@@ -156,7 +156,6 @@ void print_osabi(unsigned char *e_ident)
 			printf("UNIX - System V\n");
 			break;
 		case ELFOSABI_HPUX:
-			printf ELFOSABI_HPUX:
 				printf("UNIX - HP-UX\n");
 			break;
 		case ELFOSABI_NETBSD:
@@ -184,7 +183,7 @@ void print_osabi(unsigned char *e_ident)
 			printf("Standalone App\n");
 			break;
 		default:
-			printf("<unknown: %x\n" , e_ident[EI_OSABI]);
+			printf("<unknown: %x\n", e_ident[EI_OSABI]);
 	}
 }
 
@@ -218,7 +217,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 			break;
 			default
 			:
-			printf("<unknown: %x>\n" , e_type);
+			printf("<unknown: %x>\n", e_type);
 	}
 }
 
