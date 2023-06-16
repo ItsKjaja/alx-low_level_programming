@@ -3,7 +3,7 @@
 
 /**
  * free_dlistint - free doubly linked list
- * @h: head
+ * @head: head
  */
 
 void free_dlistint(dlistint_t *head)
