@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * insert_dnodeint_at_index - inserts a new node in a dlistint_t list
+ * insert_dnodeint_at_index - inserts a new node in a dlistint_t list.
  * at a given position
  * @head: the pointer to the head of the dlistint_t list.
  * index: the position to insert the new node
@@ -14,7 +14,7 @@
 
 dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int index, int n)
 {
-	dlistint_t *tmp= *head, *new;
+	dlistint_t *tmp = *head, *new;
 
 	if (index == 0)
 		return (add_dnodeint(head, n));
